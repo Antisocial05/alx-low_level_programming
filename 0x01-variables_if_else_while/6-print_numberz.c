@@ -6,12 +6,13 @@
 */
 int main(void)
 {
-	char digits[] = "0123456789";
+	int i = '0';
 
-	for (int i = 0; i < 10; i++)
+	while (i <= '9')
 	{
-		putchar(digits[i]);
+		putchar(i);
 		putchar('\n');
+		i++;
 	}
 
 	return (0);
