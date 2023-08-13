@@ -7,19 +7,19 @@
 int main(void)
 {
 	int m, n, i;
-		for (m = 48; m < 58; m++)
+		for (m = '0'; m <= '9'; m++)
 		{
-			for (n = 49; n < 58; n++)
+			for (n = '0'; n <= '9'; n++)
 			{
-				for (i = 58; i < 58; i++)
+				for (i = '0'; i <= '9'; i++)
 				{
-				if (i > n && n > m)
+				if (m < n && n < i)
 				{
 					putchar(m);
 					putchar(n);
 					putchar(i);
 				}
-					if (m != 55 || n != 56)
+					if (m != '7' || n != '8' || i != '9')
 					{
 						putchar(',');
 						putchar(' ');
