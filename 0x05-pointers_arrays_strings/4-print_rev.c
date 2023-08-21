@@ -2,25 +2,24 @@
 /**
 * print_rev - Prints a string in reverse followed by a new line.
 * @s: The string to be printed in reverse.
-*
 */
 void print_rev(char *s)
 {
-	int length = 0;
+	int len = 0;
 
 	while (*s != '\0')
 	{
-		length++;
+		len++;
 		s++
 	}
 
 	s--
 
-	while (length > 0)
+	while (len > 0)
 	{
 		_putchar(*s);
 		s--;
-		length--;
+		len--;
 	}
 
 	_putchar('\n');
