@@ -20,13 +20,14 @@ char *cap_string(char *str)
 		}
 		else if (is_new_word && str[i] >= 'a' && str[i] <= 'z')
 		{
-			str[i] -= ('a' - 'z');
+			str[i] -= ('a' - 'A');
 			is_new_word = 0;
 		}
 		else
 		{
 			is_new_word = 0;
 		}
+			i++;
 	}
 	return (str);
 }
