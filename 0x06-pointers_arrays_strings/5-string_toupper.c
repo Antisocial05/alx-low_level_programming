@@ -1,20 +1,20 @@
 #include "main.h"
 /**
 * string_toupper -  changes all lowercase letters of a string to uppercase.
-* @n: input value
+* @str: input value
 * Return: Always 0 (Success)
 */
-char *string_toupper(char *n)
+char *string_toupper(char *str)
 {
-	int i = 0;
+	char *ptr = str;
 
-	while (n[i] != '\0')
+	while (*ptr != '\0')
 	{
-		if (n[i] >= 'a' && n[i] <= 'z')
+		if (*ptr >= 'a' && *ptr <= 'z')
 		{
-			n[i] = n[i] - 32;
+			*ptr = *ptr - ('a' - 'A');
 		}
-		i++;
+		ptr++;
 	}
-	return (0);
+	return (str);
 }
