@@ -1,50 +1,50 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * print_buffer - prints buffer
- * @b: buffer
- * @size: size
- * Return: void
- */
-
-void print_buffer(char *b, int size)
+* infinite_add - Adds two numbers.
+* @n1: The first number.
+* @n2: The second number.
+* @r: The buffer to store the result.
+* @size_r: The size of the buffer.
+*
+* Return: A pointer to the result or 0 if the result cannot be stored.
+*/
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int o, j, i;
+	int len1, len2, carry, i;
 
-	o = 0;
+	for (len1 = 0; n1[len1]; len1++)
+		;
+	for (len2 = 0; n2[len2]; len2++)
+		;
 
-	if (size <= 0)
+	carry = 0;
+	for (i = 0; i < size_r - 1; i++)
 	{
-		printf("\n");
-		return;
-	}
-	while (o < size)
-	{
-		j = size - o < 10 ? size - o : 10;
-		printf("%08x: ", o);
-		for (i = 0; i < 10; i++)
+		if (len1 > 0)
 		{
-			if (i < j)
-				printf("%02x", *(b + o + i));
-			else
-				printf("  ");
-			if (i % 2)
-			{
-				printf(" ");
-			}
+			carry += n1[--len1] - '0';
 		}
-		for (i = 0; i < j; i++)
+		if (len2 > 0)
 		{
-			int c = *(b + o + i);
+			carry += n2[--len2] - '0';
+		}
 
-			if (c < 32 || c > 132)
-			{
-				c = '.';
-			}
-			printf("%c", c);
-		}
-		printf("\n");
-		o += 10;
+		r[i] = carry % 10 + '0';
+		carry /= 10;
 	}
+
+	if (carry != 0 || len1 > 0 || len2 > 0)
+		return (0);
+
+	r[i] = '\0';
+	for (i = 0; i < size_r / 2; i++)
+	{
+		char tmp = r[i];
+
+		r[i] = r[size_r - 1 - i];
+		r[size_r - 1 - i] = tmp;
+	}
+
+	return (r);
 }
