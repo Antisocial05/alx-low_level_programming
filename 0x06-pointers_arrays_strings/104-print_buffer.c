@@ -1,35 +1,50 @@
+#include "main.h"
 #include <stdio.h>
-#include <string.h>
+
 /**
-* print_hex - prints hex
-* @str: argument
-* Return: void
-*/
+ * print_buffer - prints buffer
+ * @b: buffer
+ * @size: size
+ * Return: void
+ */
 
-void print_hex(const char *str)
+void print_buffer(char *b, int size)
 {
-	unsigned char *p = (unsigned char *)str;
-	size_t i, len;
+	int o, j, i;
 
-	len = strlen(str);
+	o = 0;
 
-	for (i = 0; i < len; i++)
+	if (size <= 0)
 	{
-		printf("%02x ", p[i]);
+		printf("\n");
+		return;
 	}
-	printf("\n");
-}
-/**
-* main - main function
-* Return: always 0
-*/
-int main(void)
-{
-	const char *str = "This is a string!";
+	while (o < size)
+	{
+		j = size - o < 10 ? size - o : 10;
+		printf("%08x: ", o);
+		for (i = 0; i < 10; i++)
+		{
+			if (i < j)
+				printf("%02x", *(b + o + i));
+			else
+				printf("  ");
+			if (i % 2)
+			{
+				printf(" ");
+			}
+		}
+		for (i = 0; i < j; i++)
+		{
+			int c = *(b + o + i);
 
-	printf("%s\n", str);
-	printf("---------------------------------\n");
-	print_hex(str);
-
-	return (0);
+			if (c < 32 || c > 132)
+			{
+				c = '.';
+			}
+			printf("%c", c);
+		}
+		printf("\n");
+		o += 10;
+	}
 }
