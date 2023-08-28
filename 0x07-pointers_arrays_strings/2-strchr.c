@@ -3,7 +3,7 @@
 * _strchr - locates the first occurence of a character in a string
 * @s: pointer to the string
 * @c: character to be located
-* Return: pointer to the first occurrence
+* Return: pointer to the first occurrence , otherwise 0
 */
 char *_strchr(char *s, char c)
 {
@@ -19,5 +19,5 @@ char *_strchr(char *s, char c)
 	{
 		return (s);
 	}
-
+	return (0);
 }
