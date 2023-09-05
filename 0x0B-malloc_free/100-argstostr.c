@@ -1,48 +1,45 @@
 #include "main.h"
 #include <stdlib.h>
-
 /**
-* argstostr - concatenates all program arguments into a single string
-* @ac: the number of arguements
-* @av: an array of argument strings
-* Return: Pointer to the concatenated string, otherwise 0
+* argstostr - entry point
+* @ac: int input
+* @av: double pointer
+* Return: NULL
 */
+
 char *argstostr(int ac, char **av)
 {
-	int i, j;
-	int total_len = 0;
-	char *res = (char *)malloc((total_len + 1) * sizeof(char));
-	int position = 0;
+	int a, b, c = 0, f = 0;
+	char *str;
 
-	if (ac == 0 || av == NULL)
+	if (ac == 0 || av == 0)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < ac; i++)
+	for (a = 0; a < ac; a++)
 	{
-		for (j = 0; av[i][j]; j++)
+		for (b = 0; av[a][b]; b++)
 		{
-			total_len++;
+			f++;
 		}
 	}
-	total_len += ac - 1;
-	if (res == NULL)
+	f += ac;
+	str = malloc(sizeof(char) * f + 1);
+	if (str == NULL)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < ac; i++)
+	for (a = 0; a < ac; a++)
 	{
-		for (j = 0; av[i][j]; j++)
+		for (b = 0; av[a][b]; b++)
 		{
-			res[position] = av[i][j];
-			position++;
+			str[c] = av[a][b];
+			c++;
 		}
-		if (i < ac - 1)
+		if (str[c] == '\0')
 		{
-			res[position] = '\n';
-			position++;
+			str[c++] = '\n';
 		}
 	}
-	res[position] = '\0';
-	return (res);
+	return (str);
 }
