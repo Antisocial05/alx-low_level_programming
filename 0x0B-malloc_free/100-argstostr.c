@@ -20,29 +20,28 @@ char *argstostr(int ac, char **av)
 	}
 	for (i = 0; i < ac; i++)
 	{
-		j = 0;
-		while (av[i][j] != '\0')
+		for (j = 0; av[i][j]; j++)
 		{
 			total_len++;
-			j++;
 		}
-		total_len++;
 	}
+	total_len += ac - 1;
 	if (res == NULL)
 	{
 		return (NULL);
 	}
 	for (i = 0; i < ac; i++)
 	{
-		j = 0;
-		while (av[i][j] != '\0')
+		for (j = 0; av[i][j]; j++)
 		{
 			res[position] = av[i][j];
 			position++;
-			j++;
 		}
-		res[position] = '\n';
-		position++;
+		if (i < ac - 1)
+		{
+			res[position] = '\n';
+			position++;
+		}
 	}
 	res[position] = '\0';
 	return (res);
