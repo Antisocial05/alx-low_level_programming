@@ -5,7 +5,7 @@
 
 /**
 * new_dog - creates a new dog
-* @name: pointer to the name of the dog 
+* @name: pointer to the name of the dog
 * @age: Age of the dog
 * @owner: pointer to the owner's name
 * Return: pointer to new dog; NULL if allocation fails
